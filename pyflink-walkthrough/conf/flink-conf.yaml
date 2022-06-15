@@ -23,15 +23,17 @@ query.server.port: 6125
 
 taskmanager.memory.process.size: 1728Mb
 taskmanager.numberOfTaskSlots: 2
+taskmanager.memory.jvm-metaspace.size: 512m
 
 state.backend: rocksdb
 state.backend.incremental: false
 
 state.checkpoints.num-retained: 10
-execution.checkpointing.externalized-checkpoint-retention: RETAIN_ON_CANCELLATION
 state.checkpoints.dir: file:///tmp/flink-checkpoints-directory
+execution.checkpointing.interval: 10000
+execution.checkpointing.externalized-checkpoint-retention: RETAIN_ON_CANCELLATION
 
-state.savepoints.dir: file:///tmp/flink-savepoints-directory
+# state.savepoints.dir: file:///tmp/flink-savepoints-directory
 
 heartbeat.interval: 1000
 heartbeat.timeout: 5000

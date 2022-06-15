@@ -23,6 +23,9 @@ services:
     image: pyflink/pyflink:1.14.4-scala_2.12
     volumes:
       - .:/opt/pyflink-walkthrough
+      - ./conf:/opt/flink/conf
+      - /tmp/flink-checkpoints-directory:/tmp/flink-checkpoints-directory
+      - /tmp/flink-savepoints-directory:/tmp/flink-savepoints-directory
     hostname: "jobmanager"
     expose:
       - "6123"
@@ -34,7 +37,10 @@ services:
   taskmanager:
     image: pyflink/pyflink:1.14.4-scala_2.12
     volumes:
-    - .:/opt/pyflink-walkthrough
+      - .:/opt/pyflink-walkthrough
+      - ./conf:/opt/flink/conf
+      - /tmp/flink-checkpoints-directory:/tmp/flink-checkpoints-directory
+      - /tmp/flink-savepoints-directory:/tmp/flink-savepoints-directory
     expose:
       - "6121"
       - "6122"
